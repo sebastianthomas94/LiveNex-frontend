@@ -668,7 +668,7 @@ function twitchAutherization(
   );
   console.log("message lisner facebook activated");
   const messageListener = (event) => {
-    if (event.origin === "http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com") {
+    if (event.origin === `${process.env.API_BASE_URL}`) {
       console.log("from event facebook:", event);
       if (!event.data) return;
       const { platform, profilePicture, twitch_rtmp, twitchLiveUrl } = event.data;

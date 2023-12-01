@@ -16,10 +16,11 @@ export default function Login() {
 
   const googleAuth = async () => {
     try {
-      const authWindow = window.open(`${process.env.API_BASE_URL}user/auth/google`);
+      console.log(".env api base url: ",process.env.API_BASE_URL);
+      const authWindow = window.open(`${process.env.API_BASE_URL}/user/auth/google`);
       
       const messageListener = (event) => {
-        if (event.origin === "http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com") {
+        if (event.origin === `${process.env.API_BASE_URL}`) {
           const response = event.data;
           localStorage.setItem("user", response.email)
           window.removeEventListener("message", messageListener);
