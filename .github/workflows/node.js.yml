@@ -24,6 +24,7 @@ jobs:
     - name: Set npm cache directory
       run: npm config set cache ~/.npm
     - run: npm ci --verbose
+    - run: npm run build
     - name: Display npm config
       run: npm config list
 
