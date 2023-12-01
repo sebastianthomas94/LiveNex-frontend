@@ -42,7 +42,7 @@ const CreateLive = ({ isOpen, onClose }) => {
       const contentType = `multipart/form-data;`;
 
       const response = await axios.post(
-        "http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com/uploadvideo",
+        `${process.env.API_BASE_URL}/uploadvideo`,
         formData,
         {
           headers: {
@@ -552,12 +552,12 @@ function youtubeAutherization(
 
     const paramString = new URLSearchParams(params).toString();
     const authWindow = window.open(
-      `http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com/user/auth/youtubeAuth?${paramString}`,
+      `${process.env.API_BASE_URL}/user/auth/youtubeAuth?${paramString}`,
       "_blank"
     );
 
     const messageListener = (event) => {
-      if (event.origin === "http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com") {
+      if (event.origin === `${process.env.API_BASE_URL}`) {
         console.log("from event youtube:", event);
         if (!event.data) return;
         const {
@@ -607,12 +607,12 @@ function facebookAutherization(
   const paramString = new URLSearchParams(params).toString();
 
   const authWindow = window.open(
-    `http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com/user/auth/fbauuth?${paramString}`,
+    `${process.env.API_BASE_URL}/user/auth/fbauuth?${paramString}`,
     "_blank"
   );
   console.log("message lisner facebook activated");
   const messageListener = (event) => {
-    if (event.origin === "http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com") {
+    if (event.origin === `${process.env.API_BASE_URL}`) {
       console.log("from event facebook:", event);
       if (!event.data) return;
       const {
@@ -663,7 +663,7 @@ function twitchAutherization(
   const paramString = new URLSearchParams(params).toString();
 
   const authWindow = window.open(
-    `http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com/user/auth/twitchauth?${paramString}`,
+    `${process.env.API_BASE_URL}/user/auth/twitchauth?${paramString}`,
     "_blank"
   );
   console.log("message lisner facebook activated");

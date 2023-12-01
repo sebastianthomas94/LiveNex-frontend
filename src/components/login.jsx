@@ -16,7 +16,7 @@ export default function Login() {
 
   const googleAuth = async () => {
     try {
-      const authWindow = window.open("http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com/user/auth/google");
+      const authWindow = window.open(`${process.env.API_BASE_URL}user/auth/google`);
       
       const messageListener = (event) => {
         if (event.origin === "http://ec2-16-16-62-60.eu-north-1.compute.amazonaws.com") {
