@@ -26,4 +26,4 @@ jobs:
     - run: npm ci --verbose
     - name: Display npm config
       run: npm config list
-    - run: npm run build --if-present
+
